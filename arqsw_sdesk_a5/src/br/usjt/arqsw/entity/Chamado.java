@@ -1,40 +1,38 @@
 package br.usjt.arqsw.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 /**
  * 
  * @author Filippe do Nascimento Valentim
  * RA 81612333
- * Turma SI3AN-MCA
+ * SI3AN-MCA 
+ *
  */
 @Entity
-@Table(name="Chamado")
-public class Chamado
-{
-	
+public class Chamado {
 	@Id
-	@Column(name="ID_CHAMADO")
-	@NotNull
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_chamado")
 	private int numero;
 	
 	@NotNull
-	@Column(name="DT_ABERTURA")
+	@Column(name="dt_abertura")
 	private Date dataAbertura;
 	
-	@Column(name="DT_FECHAMENTO")
+	@Column(name="dt_fechamento")
 	private Date dataFechamento;
 	
 	@NotNull
-	@Column(name="STATUS")
-	@Size(max=10)
 	private String status;
 	
 	@NotNull 
@@ -42,6 +40,8 @@ public class Chamado
 	private String descricao;
 	
 	@NotNull
+	@ManyToOne
+	@JoinColumn(name="id_fila")
 	private Fila fila;
 	
 	

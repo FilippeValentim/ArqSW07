@@ -1,8 +1,8 @@
 package br.usjt.arqsw.service;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,8 @@ import br.usjt.arqsw.entity.Fila;
  * 
  * @author Filippe do Nascimento Valentim
  * RA 81612333
- * Turma SI3AN-MCA
+ * SI3AN-MCA 
+ *
  */
 @Service
 public class ChamadoService {
@@ -33,6 +34,13 @@ public class ChamadoService {
 		//return dao.inserirChamado(chamado);
 	}
 	
+	public List<Chamado> listarChamados(Fila fila) throws IOException{
+		return dao.listarChamados(fila);
+	}
 
+	public List<Chamado> listarChamadosAbertos(Fila fila) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
