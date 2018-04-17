@@ -29,6 +29,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
+                        	<th> </th>
                             <th>Fila Id</th>
                             <th>Nome Fila</th>
                             <th>Ações</th>
@@ -38,6 +39,7 @@
                     <tbody>
                         <c:forEach var="fila" items="${filas}">
                             <tr>
+                            	<td><img src="img/${fila.imagem }" height="48" width="48" class="img-circle"> </td>
                                 <td>${fila.id}</td>
                                 <td>${fila.nome }</td>
                                 <td><p data-placement="top" data-toggle="tooltip"

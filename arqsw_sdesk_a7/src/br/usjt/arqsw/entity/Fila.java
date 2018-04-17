@@ -26,6 +26,10 @@ public class Fila {
 	@Column(name="nm_fila")
 	private String nome;
 	
+	@Size(max=128, min=5, message="O tamanho do nome da imagem está entre 5 e 128 caracteres")
+	@Column(name="imagem")
+	private String imagem;
+	
 	public int getId() {
 		return id;
 	}
@@ -37,6 +41,13 @@ public class Fila {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public String getImagem() {
+		return imagem;
+	}
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
 	}
 	@Override
 	public String toString() {

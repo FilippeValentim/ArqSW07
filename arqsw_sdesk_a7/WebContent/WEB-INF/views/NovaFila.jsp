@@ -26,6 +26,9 @@
 					<div class="form-group">
 						<label for="comment">Nome Fila:</label>
 						<input class="form-control" name="nome"  required/>
+					
+					<label for="arquivo"> Selecione um arquivo </label>
+					<input type = "file" id="arquivo" class="file"/>
 					</div>
 				</div>
 			</div>

@@ -4,13 +4,17 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.usjt.arqsw.entity.Chamado;
 import br.usjt.arqsw.entity.Fila;
@@ -25,6 +29,8 @@ import br.usjt.arqsw.service.FilaService;
 @Controller("/fila")
 public class ManterFilasController {
 	private FilaService filaService;
+	@Autowired
+	private ServletContext servletContext;
 
 	@Autowired
 	public ManterFilasController(FilaService fs) {
@@ -67,12 +73,14 @@ public class ManterFilasController {
 	}
 
 	@RequestMapping("/salvarFila")
-	public String salvarChamado(Fila fila, BindingResult result, Model model) {
+	public String salvarChamado(@Valid Fila fila, BindingResult result, 
+			Model model, @RequestParam("file") MultipartFile file) {
 
 		try {
 			System.out.println(fila.getNome());
 			filaService.novaFila(fila);
 			model.addAttribute("filas", listarFilas());
+			filaService.gravarImagem(servletContext, fila, file);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -14,6 +14,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
+
 import br.usjt.arqsw.entity.Fila;
 @Repository
 public class FilaDAO {
@@ -40,5 +41,10 @@ public class FilaDAO {
 
 	public Fila carregar(int id) throws IOException {
 		return manager.find(Fila.class, id);
+	}
+	
+	public void atualizar(Fila fila){
+		System.out.println("vai atualizar: "+ fila);
+		manager.merge(fila);
 	}
 }
